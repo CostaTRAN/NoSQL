@@ -357,7 +357,7 @@ return value
 
 #### Exécution du Script :
 ```bash
-EVAL "local value = redis.call('GET', KEYS[1]); value = tonumber(value) + 1; redis.call('SET', KEYS[1],
+EVAL "local value = redis.call('GET', KEYS[1]); value = tonumber(value) + 1; redis.call('SET', KEYS[1], value); return value" 1 "mycounter"
 ```
 
 ## Conclusion
