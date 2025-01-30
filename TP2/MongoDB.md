@@ -37,7 +37,6 @@ Résultat :
   ...
 }
 ```
-Cette commande affiche un document aléatoire de la collection `films` pour en voir la structure.
 
 ### 3. Afficher la liste des films d’action.
 ```js
@@ -145,6 +144,7 @@ Résultat :
     birth_date: 1926
   },
   ...
+}
 ```
 
 ### 9. Afficher les titres et les grades des films d'action réalisés en France
@@ -296,6 +296,7 @@ Résultat :
   summary: '',
   country: 'GB',
   ...
+}
 ```
 
 ### 16. Afficher tous les films tournés avec Leonardo DiCaprio en 1997.
@@ -311,7 +312,8 @@ Résultat :
   genre: 'Drame',
   summary: 'Southampton, 10 avril 1912. Le paquebot le plus grand et le plus moderne du monde, réputé pour son insubmersibilité, le « Titanic », appareille pour son premier voyage. 4 jours plus tard, il heurte un iceberg. À son bord, un artiste pauvre et une grande bourgeoise tombent amoureux.',
   country: 'US',
-  ..
+  ...
+}
 ```
 
 ### 17. Afficher les films tournés avec Leonardo DiCaprio ou 1997.
@@ -345,6 +347,9 @@ Résultat :
       birth_date: 1974
     },
     ...
+  ]
+  ...
+}
 ```
 
 ## Conclusion
