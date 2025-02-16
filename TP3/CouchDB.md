@@ -318,14 +318,9 @@ function(doc) {
 
 ### Fonction Reduce
 ```javascript
-function(keys, values, rereduce) {
-  if (!rereduce) {
-    // Somme directe des produits
+function(keys, values) {
+    // Somme des produits
     return sum(values);
-  } else {
-    // Somme des résultats partiels
-    return sum(values);
-  }
 }
 ```
 
