@@ -250,12 +250,10 @@ Pour calculer la norme des vecteurs représentant chaque page, nous devons :
 ```javascript
 function(doc) {
   if (doc.type === 'page') {
-    // Extrait tous les poids des liens
     var weights = doc.links.map(function(link) {
       return link.weight;
     });
     
-    // Calcule la somme des carrés
     var sumSquares = weights.reduce(function(acc, weight) {
       return acc + (weight * weight);
     }, 0);
@@ -268,14 +266,7 @@ function(doc) {
 ### Fonction Reduce
 ```javascript
 function(keys, values, rereduce) {
-  if (!rereduce) {
-    // Calcule la racine carrée de la somme
     return Math.sqrt(values[0]);
-  } else {
-    // Dans le cas d'un re-reduce, on ne devrait pas arriver ici
-    // car chaque document n'émet qu'une seule valeur
-    return values[0];
-  }
 }
 ```
 
@@ -302,15 +293,13 @@ Pour calculer le produit de la matrice M avec un vecteur W, nous devons :
 ```javascript
 function(doc) {
   if (doc.type === 'page') {
-    // W est accessible comme variable statique
-    var result = 0;
-    
-    // Calcul du produit scalaire avec W
+    var result = new Array(N).fill(0);
+
     doc.links.forEach(function(link) {
-      var j = parseInt(link.target_page.replace('page_', '')) - 1; // Index dans W
-      result += link.weight * W[j];
+      var j = parseInt(link.target_page.replace('page_', '')) - 1;
+      result[j] += link.weight * W[j];
     });
-    
+
     emit(doc._id, result);
   }
 }
@@ -319,8 +308,15 @@ function(doc) {
 ### Fonction Reduce
 ```javascript
 function(keys, values) {
-    // Somme des produits
-    return sum(values);
+    var finalResult = new Array(N).fill(0);
+
+    values.forEach(function(value) {
+      for (var i = 0; i < N; i++) {
+        finalResult[i] += value[i];
+      }
+    });
+
+    return finalResult;
 }
 ```
 
